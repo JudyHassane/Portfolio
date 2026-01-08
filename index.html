@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Judy Hassane - Junior Mobile Developer & UI/UX Designer">
+    <title>Judy Hassane | Mobile Developer & UI/UX Passionate</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/avatar.png" type="image/png">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // Initialize EmailJS with Public Key
+            emailjs.init({
+                publicKey: "FmgMgXdOmCPGoeEEW",
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <img src="images/avatar.png" alt="Judy Hassane Profile">
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h1 class="name">Judy Hassane</h1>
+                    <div class="role">Mobile Developer & <br> UI/UX Passionate</div>
+                </div>
+                <button class="info-toggle" id="info-toggle">
+                    <span>Show Contacts</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-info-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:joudyhassane@hotmail.com">joudyhassane@hotmail.com</a></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+961 76 061 836</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tripoli, Lebanon</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span><a href="https://www.linkedin.com/in/judy-hassane" target="_blank">judy-hassane</a></span>
+                    </div>
+                </div>
+
+                <!-- <div class="social-links">
+                    <a href="https://github.com/JudyHassane" class="social-btn" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                </div> -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navbar -->
+            <nav class="navbar">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- About Section -->
+            <section id="about" class="section active">
+                <h2 class="section-title animate-on-scroll">About Me</h2>
+
+                <div class="about-text animate-on-scroll">
+                    <p>
+                        I am a passionate Junior Mobile Developer with a strong interest in UI/UX design, focused on
+                        building clean and user-friendly mobile applications. I enjoy working at the intersection of
+                        development and design, aiming to create experiences that are both functional and visually
+                        clear.
+                    </p>
+                    <p>
+                        With an academic background in computer science and a love for aesthetics, I focus on building
+                        applications that prioritize usability and thoughtful design.
+                    </p>
+                    <p>
+                        My interest in mobile development comes from a desire to turn impactful ideas into real mobile
+                        applications, using technology to create meaningful and accessible user experiences. Always
+                        learning, always building.
+
+                    </p>
+                </div>
+
+                <div class="sub-section animate-on-scroll">
+                    <h3 class="subtitle">What I'm Doing</h3>
+                    <div class="doing-grid">
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="card-content">
+                                <h4>Mobile Development</h4>
+                                <p>Building cross-platform apps using Flutter & Dart. Focusing on clean
+                                    architecture and BLoC for state management.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-palette"></i></div>
+                            <div class="card-content">
+                                <h4>UI/UX Design</h4>
+                                <p>Learning and applying UI/UX designs with Figma.
+                                    Creating wireframes, prototypes, and visually consistent user interfaces.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-section animate-on-scroll">
+                    <h3 class="subtitle">Skills</h3>
+                    <div class="card">
+                        <div class="skills-grid">
+                            <div class="skill-list">
+                                <a href="https://flutter.dev" target="_blank" rel="noopener noreferrer"
+                                    class="skill-tag" title="Flutter">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
+                                        alt="Flutter">
+                                </a>
+                                <a href="https://dart.dev" target="_blank" rel="noopener noreferrer" class="skill-tag"
+                                    title="Dart">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+                                        alt="Dart">
+                                </a>
+
+
+                                <a href="https://firebase.google.com" target="_blank" rel="noopener noreferrer"
+                                    class="skill-tag" title="Firebase">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
+                                        alt="Firebase">
+                                </a>
+                                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer"
+                                    class="skill-tag" title="Figma">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                                        alt="Figma">
+                                </a>
+                                <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"
+                                    class="skill-tag" title="Git">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                                        alt="Git">
+                                </a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"
+                                    rel="noopener noreferrer" class="skill-tag" title="HTML5">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                                        alt="HTML5">
+                                </a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"
+                                    rel="noopener noreferrer" class="skill-tag" title="CSS3">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                                        alt="CSS3">
+                                </a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                                    rel="noopener noreferrer" class="skill-tag" title="JavaScript">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                                        alt="JavaScript">
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resume Section -->
+            <section id="resume" class="section">
+                <h2 class="section-title animate-on-scroll">Resume</h2>
+
+                <div class="timeline-container">
+                    <h3 class="subtitle animate-on-scroll"><i class="fas fa-user-graduate"></i> &nbsp; Education</h3>
+                    <div class="timeline animate-on-scroll">
+                        <div class="timeline-item">
+                            <h4 class="timeline-title">Master 2 in Web Development</h4>
+                            <span class="timeline-date">2022 - 2025</span>
+                            <p>Lebanese University, Fanar</p>
+
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="timeline-title">BS in Computer Science</h4>
+                            <span class="timeline-date">2019 - 2022</span>
+                            <p>Online Academy</p>
+
+                        </div>
+                    </div>
+
+                    <h3 class="subtitle animate-on-scroll"><i class="fas fa-briefcase"></i> &nbsp; Experience</h3>
+                    <div class="timeline animate-on-scroll">
+                        <div class="timeline-item">
+                            <h4 class="timeline-title">Flutter Development Intern</h4>
+                            <span class="timeline-date">May 2025 - Oct 2025</span>
+                            <p>Intalio - Beirut, Lebanon</p>
+                            <div class="timeline-desc text-muted">
+                                <ul>
+                                    <li>Developed a Flutter mobile app from scratch.</li>
+                                    <li>Worked with Firebase for database management.</li>
+                                    <li>Used clean architecture and BLoC for state management.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="timeline-title">UI/UX Designer Intern</h4>
+                            <span class="timeline-date">Aug 2024 - Nov 2024</span>
+                            <p>SeekMake - Tunisia, Remote</p>
+                            <div class="timeline-desc text-muted">
+                                <ul>
+                                    <li>Designed mobile interfaces and user flows using Figma.</li>
+                                    <li>Improved UX by redesigning screens based on user feedback.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+                        <a href="CV_JudyHassane.pdf" target="_blank" class="submit-btn animate-on-scroll"
+                            style="padding: 0.8rem 1.5rem; width: auto; text-decoration: none;">
+                            Download CV <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="section">
+                <h2 class="section-title animate-on-scroll">Portfolio</h2>
+
+                <div class="filter-buttons animate-on-scroll">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="app">Mobile</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX </button>
+                </div>
+
+                <div class="portfolio-grid animate-on-scroll">
+                    <!-- Project 1 -->
+                    <a href="project.html?id=donation-app" class="project-card" data-category="app"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-img">
+                            <img src="images/noor.jpg" alt="Donation App">
+                            <div class="project-overlay">
+                                <span class="social-btn"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Donation Mobile App</h4>
+                            <span class="project-category">Flutter App</span>
+                        </div>
+                    </a>
+
+
+
+                    <!-- Project 2 -->
+                    <a href="project.html?id=ui-projects" class="project-card" data-category="ui"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-img">
+                            <img src="images/ui.jpg" alt="Learning Designs">
+                            <div class="project-overlay">
+                                <span class="social-btn"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">UI/UX Learning Projects</h4>
+                            <span class="project-category">UI/UX Design</span>
+                        </div>
+                    </a>
+
+                    <!-- Project 3 -->
+                    <a href="project.html?id=mini" class="project-card" data-category="app"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-img">
+                            <img src="images/flutte.jpg" alt="Mini Flutter Apps">
+                            <div class="project-overlay">
+                                <span class="social-btn"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Mini Flutter Projects</h4>
+                            <span class="project-category">Flutter App</span>
+                        </div>
+                    </a>
+
+                    <!-- Project 4 -->
+                    <a href="project.html?id=ui-internship" class="project-card" data-category="ui"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <div class="project-img">
+                            <img src="images/intern.jpg" alt="UI/UX Internship">
+                            <div class="project-overlay">
+                                <span class="social-btn"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">UI/UX Internship</h4>
+                            <span class="project-category">UI/UX Design</span>
+                        </div>
+                    </a>
+
+
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title animate-on-scroll">Contact</h2>
+
+                <div class="contact-container animate-on-scroll">
+                    <p style="margin-bottom: 2rem; color: var(--text-muted);">
+                        Feel free to reach out to me for any questions or opportunities.
+                    </p>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="from_name" class="form-input" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="from_email" class="form-input" placeholder="Your Email"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-input" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" rows="5" name="message" placeholder="Your Message" required
+                                style="resize: none;"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

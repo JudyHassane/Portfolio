@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Judy Hassane</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/avatar.png" type="image/png">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar (Same as index.html) -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <img src="images/avatar.png" alt="Judy Hassane Profile">
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h1 class="name">Judy Hassane</h1>
+                    <div class="role">Mobile Developer & <br> UI/UX Passionate</div>
+                </div>
+                <button class="info-toggle" id="info-toggle">
+                    <span>Show Contacts</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-info-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:joudyhassane@hotmail.com">joudyhassane@hotmail.com</a></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+961 76 061 836</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tripoli, Lebanon</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span><a href="https://www.linkedin.com/in/judy-hassane" target="_blank">judy-hassane</a></span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/JudyHassane" class="social-btn" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="section active" style="display: block;">
+                <!-- Back Button -->
+                <a href="index.html#portfolio" class="back-btn"
+                    style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; margin-bottom: 2rem; font-weight: 500; transition: color 0.3s;">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+
+                <div id="project-container" style="animation: fadeIn 0.5s ease-out;">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Project Data
+        const projects = {
+            'donation-app': {
+                title: 'Donation Mobile App',
+                category: 'Flutter App',
+                images: [
+                    'images/noor_1.jpg',
+                    'images/noor_2.jpg',
+                    'images/noor_3.jpg',
+                    'images/noor_4.jpg',
+                    'images/noor_5.jpg',
+                ],
+                description: 'This donation application is a Flutter-based mobile app built from scratch for a single charity organization to manage and facilitate donations. It supports multiple donation categories, case management, and donation tracking. Firebase is used for authentication and data storage, while BLoC is implemented for state management. The project follows clean architecture principles to ensure scalability and clear separation of concerns.',
+                technologies: ['Flutter', 'Dart', 'Firebase', 'BLoC', 'Clean Architecture'],
+                demoLink: 'images/Demo.mp4',
+
+            },
+            'ui-projects': {
+                title: 'UI/UX Learning Projects',
+                category: 'UI/UX Design',
+                images: [
+                    'images/ui_1.jpg',
+                    'images/ui_2.jpg',
+                    'images/ui_8.png',
+                    'images/ui_7.png',
+                    'images/ui_3.jpg',
+
+                ],
+                description: 'These wireframes and early UI designs were created during my first UI/UX design course. The goal of these projects was to understand core design fundamentals such as layout, spacing, wireframing, prototyping, basic animations, moodboarding, and working with components and variants.',
+                technologies: ['Figma'],
+            },
+            'ui-internship': {
+                title: 'UI/UX Internship',
+                category: 'UI/UX Design',
+                images: [],
+                description: 'During my UI/UX design internship, I collaborated with the design and development team to improve the user interface and overall user experience of the company\'s website.<br><br>Key Contributions:<br><ul><li>Identified UX issues through interface review and usability analysis</li><li>Suggested design improvements and practical UX solutions</li><li>Redesigned selected screens to improve layout, spacing, and visual hierarchy</li><li>Worked on design system components to improve consistency across the website</li><li>Refined specific sections of existing screens for better usability and clarity</li><li>Collaborated with the team to align design decisions with product goals</li></ul><br><i>Screens cannot be shared due to NDA.</i>',
+                technologies: ['Figma'],
+
+            },
+            'mini': {
+                title: 'Mini Flutter Projects',
+                category: 'Flutter App',
+                images: [
+                    'images/bmi_1.jpg',
+                    'images/bmi_2.jpg',
+                    'images/food_1.jpg',
+                    'images/food_2.jpg',
+                    'images/food_3.jpg',
+                    'images/food_4.jpg',
+                    'images/food_5.jpg',
+
+                ],
+                description: 'A collection of small Flutter applications built to practice core mobile development concepts such as state management, API integration, UI layout, and app structure.',
+                technologies: ['Flutter', 'Dart',],
+
+            }
+        };
+
+        // Parse URL Params
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+
+        const container = document.getElementById('project-container');
+
+        if (projectId && projects[projectId]) {
+            const p = projects[projectId];
+
+            // Build Images HTML
+            const imagesHtml = p.images.map(img => `
+                <div onclick="openLightbox('${img}')" style="height: 250px; width: auto; flex-shrink: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); scroll-snap-align: start; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: zoom-in; transition: transform 0.2s;">
+                    <img src="${img}" alt="${p.title}" style="height: 100%; width: auto; display: block; object-fit: cover;">
+                </div>
+            `).join('');
+
+            // Build Gallery Section
+            const gallerySection = p.images.length > 0 ? `
+                <div style="position: relative; margin-bottom: 2rem;">
+                     <button id="gallery-prev" onclick="document.getElementById('gallery-scroll').scrollBy({left: -270, behavior: 'smooth'})" 
+                        class="nav-arrow"
+                        style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(15, 23, 42, 0.8); color: var(--primary-color); border: 1px solid rgba(255,255,255,0.1); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: all 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div id="gallery-scroll" class="project-gallery" style="display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; padding: 0.5rem; scrollbar-width: none; -ms-overflow-style: none; align-items: center;">
+                        ${imagesHtml}
+                    </div>
+
+                     <button id="gallery-next" onclick="document.getElementById('gallery-scroll').scrollBy({left: 270, behavior: 'smooth'})" 
+                        class="nav-arrow"
+                        style="position: absolute; right: -20px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(15, 23, 42, 0.8); color: var(--primary-color); border: 1px solid rgba(255,255,255,0.1); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: all 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            ` : '';
+
+            // Build Demo Button HTML
+            const demoBtn = p.demoLink && p.demoLink !== '#' ? `
+                <a href="${p.demoLink}" target="_blank" class="submit-btn" style="text-decoration: none; display: inline-flex; width: auto;">
+                    <i class="fas fa-play-circle"></i> Watch Demo
+                </a>
+            ` : '';
+
+            // Build HTML
+            container.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom: 0.5rem;">${p.title}</h2>
+                    </div>
+                    ${demoBtn}
+                </div>
+
+                ${gallerySection}
+                
+                <style>
+                    /* Hide scrollbar for Chrome, Safari and Opera */
+                    .project-gallery::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .project-description ul {
+                        padding-left: 20px;
+                    }
+                    .nav-arrow:hover {
+                        background: var(--primary-color) !important;
+                        color: white !important;
+                        transform: translateY(-50%) scale(1.1) !important;
+                    }
+                    .project-gallery div:hover {
+                        transform: scale(1.02);
+                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    /* Lightbox Styles */
+                    .lightbox {
+                        position: fixed;
+                        inset: 0;
+                        z-index: 1000;
+                        background: rgba(0, 0, 0, 0); /* Fully transparent */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0.3s ease;
+                    }
+                    .lightbox.active {
+                        opacity: 1;
+                        pointer-events: all;
+                    }
+                    .lightbox-img {
+                        max-width: 90%;
+                        max-height: 90vh;
+                        border-radius: 8px;
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                        transform: scale(0.95);
+                        transition: transform 0.3s ease;
+                    }
+                    .lightbox.active .lightbox-img {
+                        transform: scale(1);
+                    }
+                    .lightbox-close {
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        background: transparent;
+                        border: none;
+                        color: white;
+                        font-size: 2rem;
+                        cursor: pointer;
+                        padding: 10px;
+                        transition: color 0.3s;
+                    }
+                    .lightbox-close:hover {
+                        color: var(--primary-color);
+                    }
+                    .lightbox-nav {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: rgba(15, 23, 42, 0.6);
+                        color: white;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        z-index: 1010;
+                        backdrop-filter: blur(4px);
+                    }
+                    .lightbox-nav:hover {
+                        background: var(--primary-color);
+                        color: var(--sidebar-bg);
+                        transform: translateY(-50%) scale(1.1);
+                    }
+                    .lightbox-nav.prev { left: 20px; }
+                    .lightbox-nav.next { right: 20px; }
+                    @media (max-width: 768px) {
+                        .lightbox-nav { width: 40px; height: 40px; font-size: 0.9rem; }
+                        .lightbox-nav.prev { left: 10px; }
+                        .lightbox-nav.next { right: 10px; }
+                    }
+                    
+                    /* App Container Blur Transition */
+                    .app-container {
+                        transition: filter 0.3s ease;
+                    }
+                    .blur-content {
+                        filter: blur(20px);
+                        pointer-events: none;
+                    }
+                </style>
+                
+                <div class="project-meta" style="margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+                    <strong style="color: var(--text-main); display: flex; align-items: center;">Technologies:</strong>
+                    ${p.technologies.map(tech => `<span style="background: rgba(255,255,255,0.05); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">${tech}</span>`).join('')}
+                </div>
+
+                
+
+                <div class="project-description" style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem; background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 16px;">
+                    <h3 style="color: var(--text-main); margin-bottom: 1rem;">About this Project</h3>
+                    <p>${p.description}</p>
+                </div>
+            `;
+
+            // Initialize Arrow Visibility
+            const gallery = document.getElementById('gallery-scroll');
+            const prevBtn = document.getElementById('gallery-prev');
+            const nextBtn = document.getElementById('gallery-next');
+
+            if (gallery && prevBtn && nextBtn) {
+                function checkScroll() {
+                    const isScrollable = gallery.scrollWidth > gallery.clientWidth;
+                    prevBtn.style.display = isScrollable ? 'flex' : 'none';
+                    nextBtn.style.display = isScrollable ? 'flex' : 'none';
+                }
+
+                // Check on initial load
+                checkScroll();
+
+                // Check on resize using ResizeObserver for robustness
+                const resizeObserver = new ResizeObserver(checkScroll);
+                resizeObserver.observe(gallery);
+
+                // Also check individually as images load (just in case ResizeObserver doesn't catch img load layout shift immediately on all browsers)
+                gallery.querySelectorAll('img').forEach(img => {
+                    if (img.complete) {
+                        checkScroll();
+                    } else {
+                        img.onload = checkScroll;
+                    }
+                });
+            }
+
+            // Append Lightbox to Body (outside app-container for proper blurring)
+            if (!document.getElementById('lightbox')) {
+                const lightboxHtml = `
+                    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+                        <button class="lightbox-nav prev" onclick="navigateLightbox(-1); event.stopPropagation()"><i class="fas fa-chevron-left"></i></button>
+                        <img id="lightbox-img" class="lightbox-img" src="" alt="Full View" onclick="event.stopPropagation()">
+                        <button class="lightbox-nav next" onclick="navigateLightbox(1); event.stopPropagation()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', lightboxHtml);
+            }
+
+            // Add Lightbox Functions
+            let currentImageIndex = 0;
+            let currentProjectImages = [];
+
+            window.openLightbox = function (src) {
+                const lightbox = document.getElementById('lightbox');
+                const img = document.getElementById('lightbox-img');
+                const appContainer = document.querySelector('.app-container');
+
+                // Get current project images
+                if (projects[projectId]) {
+                    currentProjectImages = projects[projectId].images;
+                    currentImageIndex = currentProjectImages.indexOf(src);
+                }
+
+                updateLightboxImage();
+                lightbox.classList.add('active');
+                if (appContainer) appContainer.classList.add('blur-content');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            window.navigateLightbox = function (step) {
+                if (currentProjectImages.length === 0) return;
+
+                currentImageIndex += step;
+                if (currentImageIndex < 0) {
+                    currentImageIndex = currentProjectImages.length - 1;
+                } else if (currentImageIndex >= currentProjectImages.length) {
+                    currentImageIndex = 0;
+                }
+                updateLightboxImage();
+            }
+
+            function updateLightboxImage() {
+                const img = document.getElementById('lightbox-img');
+                if (currentProjectImages.length > 0 && currentProjectImages[currentImageIndex]) {
+                    img.src = currentProjectImages[currentImageIndex];
+                }
+            }
+
+            window.closeLightbox = function () {
+                const lightbox = document.getElementById('lightbox');
+                const appContainer = document.querySelector('.app-container');
+
+                lightbox.classList.remove('active');
+                if (appContainer) appContainer.classList.remove('blur-content');
+                document.body.style.overflow = '';
+            }
+        } else {
+            container.innerHTML = '<p>Project not found.</p>';
+        }
+    </script>
+</body>
+
+</html>
